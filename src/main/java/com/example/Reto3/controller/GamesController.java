@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController()
-@RequestMapping("/api/Reservation")
+@RequestMapping("/api/Games")
 public class GamesController {
     @Autowired
     private GamesService gamesService;
