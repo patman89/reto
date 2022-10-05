@@ -1,5 +1,6 @@
 package com.example.Reto3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,9 +15,9 @@ public class Reservation {
     private Integer id;
     private String startDate;
     private String devolutionDate;
-    /*
-    @OneToMany(cascade  = {CascadeType.PERSIST},mappedBy = "client")
-    @JsonIgnoreProperties("client")
-    private List<Client>
-|   */
+
+    @ManyToOne()
+    @JoinColumn(name = "idGame")
+    @JsonIgnoreProperties("game")
+    private Game game;
 }
