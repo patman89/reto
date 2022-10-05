@@ -9,7 +9,7 @@ public class Game implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idClient;
+    private Integer id;
     private String name;
     private String developer;
     private int releaseYear;
@@ -22,12 +22,12 @@ public class Game implements Serializable {
         this.releaseYear = releaseYear;
     }
 
-    public Integer getIdClient() {
-        return idClient;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdClient(Integer idClient) {
-        this.idClient = idClient;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
