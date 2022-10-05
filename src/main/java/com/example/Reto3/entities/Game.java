@@ -1,5 +1,7 @@
 package com.example.Reto3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -14,6 +16,11 @@ public class Game implements Serializable {
     private String developer;
     private int releaseYear;
 
+    @ManyToOne
+    @JoinColumn(name="idCategory")
+    @JsonIgnoreProperties("game")
+
+    private Category category;
     public Integer getYear() {
         return releaseYear;
     }
