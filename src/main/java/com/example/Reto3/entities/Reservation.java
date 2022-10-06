@@ -16,13 +16,14 @@ public class Reservation {
     private String devolutionDate;
 
     @ManyToOne()
-    @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties("reservation")
-    private Client client;
-    @ManyToOne()
-    @JoinColumn(name = "idGame")
-    @JsonIgnoreProperties("reservation")
+    @JoinColumn(name = "game")
+    @JsonIgnoreProperties("reservations")
     private Game game;
+    @ManyToOne()
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"reservations","messages"})
+    private Client client;
+
 
     private String score;
 

@@ -21,10 +21,10 @@ public class MessageService {
         return messageRepository.getMessage(id);
     }
     public Message save(Message message){
-        if(message.getId()==null){
+        if(message.getIdMessage()==null){
             return messageRepository.save(message);
         }else{
-            Optional<Message> optionalGame = messageRepository.getMessage(message.getId());
+            Optional<Message> optionalGame = messageRepository.getMessage(message.getIdMessage());
             if(optionalGame.isPresent()){
 
                 return message;
@@ -34,8 +34,8 @@ public class MessageService {
         }
     }
     public Message update(Message message){
-        if(message.getId()!=null){
-            Optional<Message> optionalMessage = messageRepository.getMessage(message.getId());
+        if(message.getIdMessage()!=null){
+            Optional<Message> optionalMessage = messageRepository.getMessage(message.getIdMessage());
             if(optionalMessage.isPresent()){
                 if(message.getMessageText()!=null){
                     optionalMessage.get().setMessageText(message.getMessageText());

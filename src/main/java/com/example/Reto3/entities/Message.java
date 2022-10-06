@@ -11,17 +11,17 @@ public class Message implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idMessage;
     private String messageText;
-
-    @ManyToOne()
-    @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties({"message","reservation"})
-    private Client client;
     @ManyToOne()
     @JoinColumn(name = "idGame")
-    @JsonIgnoreProperties({"message","reservation"})
+    @JsonIgnoreProperties({"messages","reservations"})
     private Game game;
+    @ManyToOne()
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Client client;
+
 
 
 
@@ -33,12 +33,12 @@ public class Message implements Serializable {
         this.game = game;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getIdMessage() {
+        return idMessage;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdMessage(Integer idMessage) {
+        this.idMessage = idMessage;
     }
 
     public String getMessageText() {
