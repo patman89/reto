@@ -15,6 +15,7 @@ public class Reservation {
     private String startDate;
     private String devolutionDate;
 
+    private String status = "created";
     @ManyToOne()
     @JoinColumn(name = "game")
     @JsonIgnoreProperties("reservations")
@@ -51,6 +52,14 @@ public class Reservation {
 
     public void setDevolutionDate(String devolutionDate) {
         this.devolutionDate = devolutionDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Client getClient() {
