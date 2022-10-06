@@ -15,13 +15,15 @@ public class Message implements Serializable {
     private String messageText;
 
     @ManyToOne()
-    @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties({"messages","reservations"})
-    private Client client;
-    @ManyToOne()
     @JoinColumn(name = "idGame")
     @JsonIgnoreProperties({"messages","reservations"})
     private Game game;
+
+    @ManyToOne()
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"messages","reservations"})
+    private Client client;
+
 
 
 
@@ -33,11 +35,11 @@ public class Message implements Serializable {
         this.game = game;
     }
 
-    public Integer getId() {
+    public Integer getIdMessage() {
         return idMessage;
     }
 
-    public void setId(Integer idMessage) {
+    public void setIdMessage(Integer idMessage) {
         this.idMessage = idMessage;
     }
 
