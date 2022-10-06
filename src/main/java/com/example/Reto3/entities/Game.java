@@ -15,6 +15,7 @@ public class Game implements Serializable {
     private Integer id;
     private String name;
     private String developer;
+    private String description;
     @Column(name = "years")
     private Integer year;
 
@@ -53,6 +54,14 @@ public class Game implements Serializable {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public List<Message> getMessages() {
