@@ -1,6 +1,7 @@
-package com.example.Reto3.repository.crudRepository;
+package com.example.Reto3.repository.repository;
 
 import com.example.Reto3.entities.Reservation;
+import com.example.Reto3.repository.repository.crud.ReservationCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,7 @@
-package com.example.Reto3.repository.crudRepository;
+package com.example.Reto3.repository.repository;
 
 import com.example.Reto3.entities.Category;
+import com.example.Reto3.repository.repository.crud.CategoryCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

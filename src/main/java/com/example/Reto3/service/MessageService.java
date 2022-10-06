@@ -1,7 +1,7 @@
 package com.example.Reto3.service;
 
 import com.example.Reto3.entities.Message;
-import com.example.Reto3.repository.crudRepository.MessageRepository;
+import com.example.Reto3.repository.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

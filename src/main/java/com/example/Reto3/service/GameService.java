@@ -1,7 +1,7 @@
 package com.example.Reto3.service;
 
 import com.example.Reto3.entities.Game;
-import com.example.Reto3.repository.crudRepository.GameRepository;
+import com.example.Reto3.repository.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
