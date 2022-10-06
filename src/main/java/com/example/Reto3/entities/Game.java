@@ -24,11 +24,11 @@ public class Game implements Serializable {
     private Category category;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
-    @JsonIgnoreProperties("game")
+    @JsonIgnoreProperties({"game","category"})
     private List<Message> messages;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
-    @JsonIgnoreProperties("game")
+    @JsonIgnoreProperties({"game","category"})
     private List<Reservation> reservations;
 
     public Integer getId() {
@@ -63,12 +63,12 @@ public class Game implements Serializable {
         this.messages = messages;
     }
 
-    public List<Reservation> getReservations() {
+    public List<Reservation> getReservation() {
         return reservations;
     }
 
-    public void setReservations(List<Reservation> reservations) {
-        this.reservations = reservations;
+    public void setReservation(List<Reservation> reservation) {
+        this.reservations = reservation;
     }
 
     public String getName() {
