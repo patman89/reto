@@ -15,11 +15,11 @@ public class Reservation {
 
     @ManyToOne()
     @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties("reservation")
+    @JsonIgnoreProperties("reservations")
     private Client client;
     @ManyToOne()
     @JoinColumn(name = "idGame")
-    @JsonIgnoreProperties("reservation")
+    @JsonIgnoreProperties("reservations")
     private Game game;
 
     public Integer getId() {
