@@ -63,12 +63,12 @@ public class Game implements Serializable {
         this.messages = messages;
     }
 
-    public List<Reservation> getReservation() {
+    public List<Reservation> getReservations() {
         return reservations;
     }
 
-    public void setReservation(List<Reservation> reservation) {
-        this.reservations = reservation;
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
     public String getName() {
