@@ -1,10 +1,8 @@
 package com.example.Reto3.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name ="reservation")
@@ -17,11 +15,11 @@ public class Reservation {
 
     @ManyToOne()
     @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties("reservation")
+    @JsonIgnoreProperties("reservations")
     private Client client;
     @ManyToOne()
     @JoinColumn(name = "idGame")
-    @JsonIgnoreProperties("reservation")
+    @JsonIgnoreProperties("reservations")
     private Game game;
 
     public Integer getId() {
