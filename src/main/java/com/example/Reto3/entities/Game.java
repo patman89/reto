@@ -15,10 +15,10 @@ public class Game implements Serializable {
     private Integer id;
     private String name;
     private String developer;
-    private String description;
+
     @Column(name = "years")
     private Integer year;
-
+    private String description;
     @ManyToOne
     @JoinColumn(name="categoryId")
     @JsonIgnoreProperties({"games","category"})
