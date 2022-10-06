@@ -14,7 +14,7 @@ public class Reservation {
     private Integer id;
     private String startDate;
     private String devolutionDate;
-    p
+
     @ManyToOne()
     @JoinColumn(name = "idClient")
     @JsonIgnoreProperties("reservation")
