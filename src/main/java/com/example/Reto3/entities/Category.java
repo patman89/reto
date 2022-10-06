@@ -11,23 +11,21 @@ public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idCategory;
+    private Integer id;
     private String name;
     private String description;
 
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
     @JsonIgnoreProperties("category")
-
     private List<Game> game;
 
-
-    public Integer getIdCategory() {
-        return idCategory;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdCategory(Integer id) {
-        this.idCategory = id;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {

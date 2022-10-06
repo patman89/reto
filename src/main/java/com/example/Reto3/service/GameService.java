@@ -1,7 +1,7 @@
 package com.example.Reto3.service;
 
 import com.example.Reto3.entities.Game;
-import com.example.Reto3.repository.crudRepository.GameRepository;
+import com.example.Reto3.repository.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +21,10 @@ public class GameService {
         return gameRepository.getGame(id);
     }
     public Game save(Game game){
-        if(game.getIdClient()==null){
+        if(game.getId()==null){
             return gameRepository.save(game);
         }else{
-            Optional<Game> optionalGame = gameRepository.getGame(game.getIdClient());
+            Optional<Game> optionalGame = gameRepository.getGame(game.getId());
             if(optionalGame.isPresent()){
 
                 return game;
@@ -34,8 +34,8 @@ public class GameService {
         }
     }
     public Game update(Game game){
-        if(game.getIdClient()!=null){
-            Optional<Game> optionalGame = gameRepository.getGame(game.getIdClient());
+        if(game.getId()!=null){
+            Optional<Game> optionalGame = gameRepository.getGame(game.getId());
             if(optionalGame.isPresent()){
                 if(game.getName()!=null){
                     optionalGame.get().setName(game.getName());

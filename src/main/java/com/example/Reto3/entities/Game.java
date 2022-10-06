@@ -4,37 +4,71 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
-@Table(name = "games")
+@Table(name = "game")
 public class Game implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idClient;
+    private Integer id;
     private String name;
     private String developer;
-    private int releaseYear;
+    @Column(name = "years")
+    private Integer year;
 
     @ManyToOne
-    @JoinColumn(name="idCategory")
+    @JoinColumn(name="categoryId")
     @JsonIgnoreProperties("game")
-
     private Category category;
+
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
+    @JsonIgnoreProperties("game")
+    private List<Message> message;
+
+    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
+    @JsonIgnoreProperties("game")
+    private List<Reservation> reservation;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getYear() {
-        return releaseYear;
+        return year;
     }
 
-    public void setYear(Integer releaseYear) {
-        this.releaseYear = releaseYear;
+    public void setYear(int year) {
+        this.year = year;
     }
 
-    public Integer getIdClient() {
-        return idClient;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setIdClient(Integer idClient) {
-        this.idClient = idClient;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<Message> getMessage() {
+        return message;
+    }
+
+    public void setMessage(List<Message> message) {
+        this.message = message;
+    }
+
+    public List<Reservation> getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(List<Reservation> reservation) {
+        this.reservation = reservation;
     }
 
     public String getName() {
