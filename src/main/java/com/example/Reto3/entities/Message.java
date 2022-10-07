@@ -13,12 +13,10 @@ public class Message implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMessage;
     private String messageText;
-
     @ManyToOne()
     @JoinColumn(name = "idGame")
     @JsonIgnoreProperties({"messages","reservations"})
     private Game game;
-
     @ManyToOne()
     @JoinColumn(name = "idClient")
     @JsonIgnoreProperties({"messages","reservations"})

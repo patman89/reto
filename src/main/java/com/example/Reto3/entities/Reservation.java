@@ -1,8 +1,10 @@
 package com.example.Reto3.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name ="reservation")
@@ -13,14 +15,20 @@ public class Reservation {
     private String startDate;
     private String devolutionDate;
 
+    private String status = "created";
     @ManyToOne()
-    @JoinColumn(name = "idClient")
-    @JsonIgnoreProperties("reservations")
-    private Client client;
-    @ManyToOne()
-    @JoinColumn(name = "idGame")
+    @JoinColumn(name = "game")
     @JsonIgnoreProperties("reservations")
     private Game game;
+    @ManyToOne()
+    @JoinColumn(name = "idClient")
+    @JsonIgnoreProperties({"reservations","messages"})
+    private Client client;
+
+
+    private String score;
+
+
 
     private String score;
 
@@ -46,6 +54,14 @@ public class Reservation {
 
     public void setDevolutionDate(String devolutionDate) {
         this.devolutionDate = devolutionDate;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public Client getClient() {
