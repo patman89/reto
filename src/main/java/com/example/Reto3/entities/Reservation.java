@@ -1,10 +1,8 @@
 package com.example.Reto3.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name ="reservation")
@@ -28,9 +26,6 @@ public class Reservation {
 
     private String score;
 
-
-
-    private String score;
 
     public Integer getId() {
         return id;
