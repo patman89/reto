@@ -24,7 +24,7 @@ public class Reservation {
     private Client client;
 
 
-    private String score;
+    private String score = "None";
 
 
     public Integer getId() {
