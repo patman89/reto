@@ -22,6 +22,8 @@ public class Reservation {
     @JsonIgnoreProperties("reservations")
     private Game game;
 
+    private String score;
+
     public Integer getId() {
         return id;
     }
@@ -60,5 +62,13 @@ public class Reservation {
 
     public void setGame(Game game) {
         this.game = game;
+    }
+
+    public String getScore() {
+        return score;
+    }
+
+    public void setScore(String score) {
+        this.score = score;
     }
 }
