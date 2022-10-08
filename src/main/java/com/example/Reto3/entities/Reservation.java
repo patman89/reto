@@ -3,15 +3,16 @@ package com.example.Reto3.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name ="reservation")
 public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String startDate;
-    private String devolutionDate;
+    private Integer idReservation;
+    private Date startDate;
+    private Date devolutionDate;
 
     private String status = "created";
     @ManyToOne()
@@ -24,30 +25,30 @@ public class Reservation {
     private Client client;
 
 
-    private String score = "None";
+    private Integer score;
 
 
-    public Integer getId() {
-        return id;
+    public Integer getIdReservation() {
+        return idReservation;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
     }
 
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getDevolutionDate() {
+    public Date getDevolutionDate() {
         return devolutionDate;
     }
 
-    public void setDevolutionDate(String devolutionDate) {
+    public void setDevolutionDate(Date devolutionDate) {
         this.devolutionDate = devolutionDate;
     }
 
@@ -75,11 +76,11 @@ public class Reservation {
         this.game = game;
     }
 
-    public String getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(String score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 }

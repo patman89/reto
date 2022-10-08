@@ -22,10 +22,10 @@ public class ReservationService {
     }
 
     public Reservation save(Reservation reservation){
-        if(reservation.getId() == null) {
+        if(reservation.getIdReservation() == null) {
             return reservationRepository.save(reservation);
         }else{
-            Optional<Reservation> optionalReservation = reservationRepository.getReservation(reservation.getId());
+            Optional<Reservation> optionalReservation = reservationRepository.getReservation(reservation.getIdReservation());
             if(optionalReservation.isEmpty()){
                 return reservationRepository.save(reservation);
             }else{
@@ -35,8 +35,8 @@ public class ReservationService {
     }
 
     public Reservation update(Reservation reservation){
-        if(reservation.getId() != null){
-            Optional<Reservation> optionalReservation = reservationRepository.getReservation(reservation.getId());
+        if(reservation.getIdReservation() != null){
+            Optional<Reservation> optionalReservation = reservationRepository.getReservation(reservation.getIdReservation());
             if(!optionalReservation.isPresent()){
                 if(reservation.getStartDate()!=null) {
                     optionalReservation.get().setStartDate(reservation.getStartDate());
