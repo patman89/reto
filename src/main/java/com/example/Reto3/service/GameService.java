@@ -46,6 +46,9 @@ public class GameService {
                 if(game.getYear()!=null){
                     optionalGame.get().setYear(game.getYear());
                 }
+                if(game.getDescription()!=null){
+                    optionalGame.get().setDescription(game.getDescription());
+                }
                 if(game.getCategory()!=null){
                     optionalGame.get().setCategory(game.getCategory());
                 }
