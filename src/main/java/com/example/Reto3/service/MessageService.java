@@ -17,7 +17,7 @@ public class MessageService {
     public List<Message> getAll(){
         return messageRepository.getAll();
     }
-    public Optional<Message> getProduct(int id){
+    public Optional<Message> getMessage(int id){
         return messageRepository.getMessage(id);
     }
     public Message save(Message message){

@@ -17,7 +17,7 @@ public class GameService {
     public List<Game> getAll(){
         return gameRepository.getAll();
     }
-    public Optional<Game> getProduct(int id){
+    public Optional<Game> getGame(int id){
         return gameRepository.getGame(id);
     }
     public Game save(Game game){
