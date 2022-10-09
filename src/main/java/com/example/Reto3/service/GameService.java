@@ -46,6 +46,15 @@ public class GameService {
                 if(game.getYear()!=null){
                     optionalGame.get().setYear(game.getYear());
                 }
+                if(game.getCategory()!=null){
+                    optionalGame.get().setCategory(game.getCategory());
+                }
+                if(game.getMessages()!=null){
+                    optionalGame.get().setMessages(game.getMessages());
+                }
+                if(game.getReservations()!=null){
+                    optionalGame.get().setReservations(game.getReservations());
+                }
                 gameRepository.save(optionalGame.get());
                 return optionalGame.get();
             }else{

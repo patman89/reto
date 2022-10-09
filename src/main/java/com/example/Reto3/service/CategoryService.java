@@ -39,6 +39,12 @@ public class CategoryService {
                 if(p.getName()!=null){
                     q.get().setName(p.getName());
                 }
+                if(p.getDescription() != null){
+                    q.get().setDescription((p.getDescription()));
+                }
+                if(p.getGames() != null){
+                    q.get().setGames((p.getGames()));
+                }
                 categoryRepository.save(q.get());
                 return q.get();
             }else{

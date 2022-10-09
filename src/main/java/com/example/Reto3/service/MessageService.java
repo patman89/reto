@@ -40,6 +40,12 @@ public class MessageService {
                 if(message.getMessageText()!=null){
                     optionalMessage.get().setMessageText(message.getMessageText());
                 }
+                if(message.getGame()!=null){
+                    optionalMessage.get().setGame(message.getGame());
+                }
+                if(message.getClient()!=null){
+                    optionalMessage.get().setClient(message.getClient());
+                }
                 messageRepository.save(optionalMessage.get());
                 return optionalMessage.get();
             }else{

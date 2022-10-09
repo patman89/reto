@@ -44,6 +44,18 @@ public class ReservationService {
                 if(reservation.getDevolutionDate()!=null) {
                     optionalReservation.get().setDevolutionDate(reservation.getDevolutionDate());
                 }
+                if(reservation.getStatus()!=null) {
+                    optionalReservation.get().setStatus(reservation.getStatus());
+                }
+                if(reservation.getGame()!=null) {
+                    optionalReservation.get().setGame(reservation.getGame());
+                }
+                if(reservation.getClient()!=null) {
+                    optionalReservation.get().setClient(reservation.getClient());
+                }
+                if(reservation.getScore()!=null) {
+                    optionalReservation.get().setScore(reservation.getScore());
+                }
                 reservationRepository.save(optionalReservation.get());
                 return  optionalReservation.get();
             }else{
