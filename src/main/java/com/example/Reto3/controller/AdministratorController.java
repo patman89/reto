@@ -17,12 +17,13 @@ public class AdministratorController {
     private AdministratorService AdministratorService;
 
     @GetMapping("/all")
-    public List<Administrator> getAll(){
+    public List<Administrator> getAll() {
         return AdministratorService.getAll();
     }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Administrator save(@RequestBody  Administrator p){
+    public Administrator save(@RequestBody Administrator p) {
         return AdministratorService.save(p);
     }
 

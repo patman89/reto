@@ -19,13 +19,13 @@ public class MessageController {
     private MessageService messageService;
 
     @GetMapping("/all")
-    public List<Message> getAll(){
+    public List<Message> getAll() {
         return messageService.getAll();
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/save")
-    public Message save(@RequestBody Message message){
+    public Message save(@RequestBody Message message) {
         return messageService.save(message);
     }
 
@@ -37,7 +37,7 @@ public class MessageController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int id){
+    public boolean delete(@PathVariable("id") int id) {
         return messageService.delete(id);
     }
 }

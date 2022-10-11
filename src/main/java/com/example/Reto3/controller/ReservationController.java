@@ -1,6 +1,8 @@
 package com.example.Reto3.controller;
 
 import com.example.Reto3.entities.Reservation;
+import com.example.Reto3.entities.custom.CountClient;
+import com.example.Reto3.entities.custom.StatusAmount;
 import com.example.Reto3.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,9 +19,10 @@ public class ReservationController {
     private ReservationService reservationService;
 
     @GetMapping("/all")
-    public List<Reservation> getAll(){
+    public List<Reservation> getAll() {
         return reservationService.getAll();
     }
+
     /*
     @GetMapping("/{id}")
     public Optional<Reservation> getReservation(@PathVariable("id") int id) {
@@ -28,7 +31,7 @@ public class ReservationController {
 */
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/save")
-    public Reservation save(@RequestBody Reservation reservation){
+    public Reservation save(@RequestBody Reservation reservation) {
         return reservationService.save(reservation);
     }
 
@@ -40,7 +43,23 @@ public class ReservationController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int id){
+    public boolean delete(@PathVariable("id") int id) {
         return reservationService.delete(id);
     }
+
+    @GetMapping("/report-status")
+    public StatusAmount getReservationDescriptionAmount() {
+        return reservationService.getStatusReport();
+    }
+
+    @GetMapping("/report-clients")
+    public List<CountClient> getCountClient() {
+        return reservationService.getTopClient();
+    }
+
+    @GetMapping("report-dates/{startDate}/{devolutionDate}")
+    public List<Reservation> getReservationReport(@PathVariable("startDate") String startDateString, @PathVariable("devolutionDate") String devolutionDateString) {
+        return reservationService.getReservationPeriod(startDateString, devolutionDateString);
+    }
+
 }

@@ -19,13 +19,13 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping("/all")
-    public List<Game> getAll(){
+    public List<Game> getAll() {
         return gameService.getAll();
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Game save(@RequestBody Game c){
+    public Game save(@RequestBody Game c) {
         return gameService.save(c);
     }
 
@@ -37,7 +37,7 @@ public class GameController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
-    public boolean delete(@PathVariable("id") int id){
+    public boolean delete(@PathVariable("id") int id) {
         return gameService.delete(id);
     }
 }
