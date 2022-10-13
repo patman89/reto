@@ -15,21 +15,22 @@ public class Game implements Serializable {
     private Integer id;
     private String name;
     private String developer;
+
     @Column(name = "years")
     private Integer year;
-
+    private String description;
     @ManyToOne
     @JoinColumn(name="categoryId")
-    @JsonIgnoreProperties("game")
+    @JsonIgnoreProperties({"games","category"})
     private Category category;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
-    @JsonIgnoreProperties("game")
-    private List<Message> message;
+    @JsonIgnoreProperties({"game","client"})
+    private List<Message> messages;
 
     @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "game")
-    @JsonIgnoreProperties("game")
-    private List<Reservation> reservation;
+    @JsonIgnoreProperties({"game"})
+    private List<Reservation> reservations;
 
     public Integer getId() {
         return id;
@@ -55,20 +56,28 @@ public class Game implements Serializable {
         this.category = category;
     }
 
-    public List<Message> getMessage() {
-        return message;
+    public String getDescription() {
+        return description;
     }
 
-    public void setMessage(List<Message> message) {
-        this.message = message;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public List<Reservation> getReservation() {
-        return reservation;
+    public List<Message> getMessages() {
+        return messages;
     }
 
-    public void setReservation(List<Reservation> reservation) {
-        this.reservation = reservation;
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
     public String getName() {

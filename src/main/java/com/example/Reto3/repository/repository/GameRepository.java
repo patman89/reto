@@ -15,16 +15,19 @@ public class GameRepository {
     @Autowired
     private GameCrudRepository clientCrudRepository;
 
-    public List<Game> getAll(){
+    public List<Game> getAll() {
         return (List<Game>) clientCrudRepository.findAll();
     }
-    public Optional<Game> getGame(int id){
+
+    public Optional<Game> getGame(int id) {
         return clientCrudRepository.findById(id);
     }
-    public Game save(Game c){
+
+    public Game save(Game c) {
         return clientCrudRepository.save(c);
     }
-    public void delete(Game c){
+
+    public void delete(Game c) {
         clientCrudRepository.delete(c);
     }
 

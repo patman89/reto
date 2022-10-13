@@ -14,47 +14,57 @@ public class MessageService {
     @Autowired
     private MessageRepository messageRepository;
 
-    public List<Message> getAll(){
+    public List<Message> getAll() {
         return messageRepository.getAll();
     }
-    public Optional<Message> getProduct(int id){
+
+    public Optional<Message> getMessage(int id) {
         return messageRepository.getMessage(id);
     }
-    public Message save(Message message){
-        if(message.getId()==null){
+
+    public Message save(Message message) {
+        if (message.getIdMessage() == null) {
             return messageRepository.save(message);
-        }else{
-            Optional<Message> optionalGame = messageRepository.getMessage(message.getId());
-            if(optionalGame.isPresent()){
+        } else {
+            Optional<Message> optionalGame = messageRepository.getMessage(message.getIdMessage());
+            if (optionalGame.isPresent()) {
 
                 return message;
-            }else{
+            } else {
                 return messageRepository.save(message);
             }
         }
     }
-    public Message update(Message message){
-        if(message.getId()!=null){
-            Optional<Message> optionalMessage = messageRepository.getMessage(message.getId());
-            if(optionalMessage.isPresent()){
-                if(message.getMessageText()!=null){
+
+    public Message update(Message message) {
+        if (message.getIdMessage() != null) {
+            Optional<Message> optionalMessage = messageRepository.getMessage(message.getIdMessage());
+            if (optionalMessage.isPresent()) {
+                if (message.getMessageText() != null) {
                     optionalMessage.get().setMessageText(message.getMessageText());
+                }
+                if (message.getGame() != null) {
+                    optionalMessage.get().setGame(message.getGame());
+                }
+                if (message.getClient() != null) {
+                    optionalMessage.get().setClient(message.getClient());
                 }
                 messageRepository.save(optionalMessage.get());
                 return optionalMessage.get();
-            }else{
+            } else {
                 return message;
             }
-        }else{
+        } else {
             return message;
         }
     }
-    public boolean delete(int id){
-        boolean flag=false;
+
+    public boolean delete(int id) {
+        boolean flag = false;
         Optional<Message> optionalMessage = messageRepository.getMessage(id);
-        if(optionalMessage.isPresent()){
+        if (optionalMessage.isPresent()) {
             messageRepository.delete(optionalMessage.get());
-            flag=true;
+            flag = true;
         }
         return flag;
 

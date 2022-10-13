@@ -5,20 +5,20 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+
 @Entity
 @Table(name = "category")
-public class Category implements Serializable {
+public class Administrator implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String description;
+    private String password;
+    private String email;
 
 
-    @OneToMany(cascade = {CascadeType.PERSIST},mappedBy = "category")
-    @JsonIgnoreProperties({"category","game"})
-    private List<Game> games;
+
 
     public Integer getId() {
         return id;
@@ -36,19 +36,19 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPassword() {
+        return password;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public List<Game> getGames() {
-        return games;
+    public String getEmail() {
+        return email;
     }
 
-    public void setGames(List<Game> games) {
-        this.games = games;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

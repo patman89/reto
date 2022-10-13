@@ -10,18 +10,32 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/Category")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
     @GetMapping("/all")
-    public List<Category> getAll(){
+    public List<Category> getAll() {
         return categoryService.getAll();
     }
+
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Category save(@RequestBody  Category p){
+    public Category save(@RequestBody Category p) {
         return categoryService.save(p);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PutMapping("/update")
+    public Category update(@RequestBody Category category) {
+        return categoryService.update(category);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable("id") int id) {
+        return categoryService.delete(id);
     }
 }
