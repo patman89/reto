@@ -9,8 +9,6 @@ function getInformation() {
         datatype: "JSON",
         success: function (information) {
             console.log(information);
-            console.log(information.items);
-            console.log(information[0]);
             showInformation(information);
     }
     });
@@ -21,33 +19,41 @@ function showInformation(items){
      return;
     let myTable='<div class="container"><div class="row">';
     for(i=0;i<items.length;i++){
-        myTable+=`
-        <div class="card m2" style="width: 18rem;">
-           <div class="card-body">
-            <h5 class="card-title">${items[i].id}</h5>
-            <h6 class="card-subtitle mb-2 test-muted">${items[i].name}</h6>
-             <h3 class="card-subtitle mb-2 test-muted">${items[i].developer}</h3>
-              <h6 class="card-subtitle mb-2 test-muted">${items[i].year}</h6>
-             <h6 class="card-subtitle mb-2 test-muted">${items[i].description}</h6>
+        let data = items[i];
+        let convertJSON = JSON.stringify(data);
+        myTable+= '<div class="card m2" style="width: 18rem;">';
+        myTable+= '<div class="card-body">';
+        myTable+= '<h5 class="card-title">'+data.id+'</h5>';
+        myTable+= '<h6 class="card-subtitle mb-2 test-muted">'+data.name+'</h6>';
+        myTable+= '<h3 class="card-subtitle mb-2 test-muted">'+data.developer+'</h3>';
+        myTable+= '<h6 class="card-subtitle mb-2 test-muted">'+data.year+'</h6>';
+        myTable+= '<h6 class="card-subtitle mb-2 test-muted">'+data.description+'</h6>';
+        myTable+= '<p class="card-text">'+data.name+'</p>';
+        myTable += "<td><button  class='btn btn-primary mb-3' onclick='showInformationInFields("+ convertJSON + ")'>Edit</button></td>";
+        myTable+= '<button class="btn btn-danger" onclick="deletElementById('+data.id+')">Delete</button>';
+        myTable+= '</div>';
+        myTable+= '</div>';
 
-             <p class="card-text">${items[i].name}</p>
-            <button class="btn btn-danger" onclick="deletElementById(${items[i].id})">Delete</button>
-          </div>
-        </div>
-         `
     }
     myTable += " </div></div>";
-    //$("#result."+className).empty();
+    $("#resultado").empty();
     $("#resultado").append(myTable);
 }
-
+function showInformationInFields(data){
+      $("#id").val(data.id);
+      $("#name").val(data.name);
+      $("#developer").val(data.developer);
+      $("#year").val(data.year);
+      $("#description").val(data.description);
+}
 function saveInformation() {
 
     let myData = {
-    name:$("#name").val(),
-    developer:$("#developer").val(),
-    year:$("#year").val(),
-    description:$("#description").val(),
+
+        name:$("#name").val(),
+        developer:$("#developer").val(),
+        year:$("#year").val(),
+        description:$("#description").val(),
     };
     let dataToSend=JSON.stringify(myData);
     $.ajax({
@@ -60,6 +66,7 @@ function saveInformation() {
         success: function () {
 
             $("#result").empty();
+            $("#id").val("");
             $("#name").val("");
             $("#developer").val("");
             $("#year").val("");
@@ -71,45 +78,48 @@ function saveInformation() {
 }
 
 function editInformation() {
-    let table = $("#table." + className + " input");
-    let myData = {};
-    for (i = 0; i < table.length; i++) {
-        let key = table[i].id;
-        myData[key] = $("#" + table[i].id + "." + className).val();
-    }
+    let myData = {
+            id:$("#id").val(),
+            name:$("#name").val(),
+            developer:$("#developer").val(),
+            year:$("#year").val(),
+            description:$("#description").val(),
+        };
     let dataToSend = JSON.stringify(myData);
     $.ajax({
-        url: "https://g66791ff9529f18-games.adb.us-phoenix-1.oraclecloudapps.com/ords/admin/games/games" + routeTable,
-
+        url: "/api/Game/update",
         type: "PUT",
         data: dataToSend,
         contentType: "application/JSON",
         datatype: "JSON",
-        success: function () {
-
+        success: function (respuesta) {
+            console.log(respuesta);
             $("#result").empty();
-            for (i = 0; i < table.length; i++) {
-                $("#" + table[i].id + "." + className).val("");
-            }
-            getInformation(routeTable, className);
-            alert("Se ha actualizado");
+            $("#id").empty(),
+                        $("#result").empty();
+                        $("#name").val("");
+                        $("#developer").val("");
+                        $("#year").val("");
+                        $("#description").val("");
+            getInformation();
+            alert("as been update");
         }
     });
 }
-function deletElementById(elemetnId,className,routeTable) {
+function deletElementById(elementId) {
     let myData = {
-        id: elemetnId
+        id: elementId
     };
     let dataToSend = JSON.stringify(myData);
     $.ajax({
-        url: "https://g66791ff9529f18-games.adb.us-phoenix-1.oraclecloudapps.com/ords/admin/games/games" + routeTable,
+        url: "/api/Game/"+ elementId,
         type: "DELETE",
         data: dataToSend,
         contentType: "application/JSON",
         datatype: "JSON",
         success: function (respuesta) {
             $("#result").empty();
-            getInformation(routeTable,className);
+            getInformation();
             alert("Se ha eliminado");
         }
     });
