@@ -17,13 +17,13 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @GetMapping("/all")
-    public List<Category> getAll(){
+    public List<Category> getAll() {
         return categoryService.getAll();
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Category save(@RequestBody  Category p){
+    public Category save(@RequestBody Category p) {
         return categoryService.save(p);
     }
 

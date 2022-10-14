@@ -15,16 +15,19 @@ public class ClientRepository {
     @Autowired
     private ClientCrudRepository clientCrudRepository;
 
-    public List<Client> getAll(){
+    public List<Client> getAll() {
         return (List<Client>) clientCrudRepository.findAll();
     }
-    public Optional<Client> getClient(int id){
+
+    public Optional<Client> getClient(int id) {
         return clientCrudRepository.findById(id);
     }
-    public Client save(Client c){
+
+    public Client save(Client c) {
         return clientCrudRepository.save(c);
     }
-    public void delete(Client c){
+
+    public void delete(Client c) {
         clientCrudRepository.delete(c);
     }
 
