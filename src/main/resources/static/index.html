@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MisionTic2022</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="MyScript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+</head>
+
+
+<body>
+
+
+
+        <h1 class="text-md-center m-4">Games Table</h1>
+        <div id="resultado" ></div>
+        <br>
+         <div id="table" class="form-group container text-center">
+            <input class="form-control m-3" style="width: 18em" type="number"  id="id" placeholder="id">
+            <input class="form-control m-3" style="width: 18em" type="text" id="name" placeholder="name">
+            <input class="form-control m-3" style="width: 18em"type="text" id="developer" placeholder="developer">
+            <input class="form-control m-3" style="width: 18em" type="number" id="year" placeholder="year">
+            <input class="form-control m-3" style="width: 18em" type="text" id="description" placeholder="description">
+            <input class="form-control m-3" style="width: 18em" type="number" id="category" placeholder="category">
+
+            <br>
+            <button class="btn btn-primary mb-3" onclick="saveInformation()">Save</button>
+            <button class="btn btn-primary mb-3" onclick="editInformation()">Update</button>
+         </div>
+  </body>
+
+</html>
