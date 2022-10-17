@@ -40,7 +40,7 @@ function showInformation(items){
     $("#resultado").append(myTable);
 }
 function showInformationInFields(data){
-      $("#id").val(data.id);
+      $("#id").val(data.idReservation);
       $("#startDate").val(data.startDate);
       $("#devolutionDate").val(data.devolutionDate);
       $("#status").val(data.status);

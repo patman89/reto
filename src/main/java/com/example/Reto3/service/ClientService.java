@@ -28,7 +28,6 @@ public class ClientService {
         } else {
             Optional<Client> e = clientRepository.getClient(p.getIdClient());
             if (e.isPresent()) {
-
                 return p;
             } else {
                 return clientRepository.save(p);
@@ -56,7 +55,7 @@ public class ClientService {
                     q.get().setMessages(p.getMessages());
                 }
                 if (p.getReservations() != null) {
-                    q.get().setReservations(p.getReservations());
+                    q.get().setReservations (p.getReservations());
                 }
                 clientRepository.save(q.get());
                 return q.get();

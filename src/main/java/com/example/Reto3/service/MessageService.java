@@ -28,7 +28,6 @@ public class MessageService {
         } else {
             Optional<Message> optionalGame = messageRepository.getMessage(message.getIdMessage());
             if (optionalGame.isPresent()) {
-
                 return message;
             } else {
                 return messageRepository.save(message);

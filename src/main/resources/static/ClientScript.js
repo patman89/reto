@@ -40,7 +40,8 @@ function showInformation(items){
     $("#resultado").append(myTable);
 }
 function showInformationInFields(data){
-      $("#id").val(data.id);
+        console.log(data.id);
+      $("#id").val(data.idClient);
       $("#name").val(data.name);
       $("#email").val(data.email);
       $("#password").val(data.password);

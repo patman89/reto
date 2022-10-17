@@ -23,7 +23,7 @@ function showInformation(items){
         let convertJSON = JSON.stringify(data);
         myTable+= '<div class="card m2" style="width: 18rem;">';
         myTable+= '<div class="card-body">';
-        myTable+= '<h5 class="card-title">'+data.idMessage'</h5>';
+        myTable+= '<h5 class="card-title">'+data.idMessage+'</h5>';
         myTable+= '<h6 class="card-subtitle mb-2 test-muted">'+data.messageText+'</h6>';
         myTable+= '<p class="card-text">'+data.messageText+'</p>';
         myTable += "<td><button  class='btn btn-primary mb-3' onclick='showInformationInFields("+ convertJSON + ")'>Edit</button></td>";
@@ -37,8 +37,8 @@ function showInformation(items){
     $("#resultado").append(myTable);
 }
 function showInformationInFields(data){
-      $("#id").val(data.id);
-      $("#message").val(data.message);
+      $("#id").val(data.idMessage);
+      $("#message").val(data.messageText);
 
 }
 function saveInformation() {

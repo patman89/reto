@@ -24,7 +24,6 @@ public class Reservation {
     @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
 
-
     private Integer score;
 
 
